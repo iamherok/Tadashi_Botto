@@ -27,6 +27,7 @@
           "description": "A key used for gif searches",
           "required": false
       },
+},
   "buildpacks": [
       {
           "url": "heroku/nodejs"
