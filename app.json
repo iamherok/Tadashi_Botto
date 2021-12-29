@@ -1,22 +1,15 @@
 {
   "name": "whatsapp-bot",
-  "description": "whatsapp bot build with nodejs",
-  "repository": "https://github.com/justpiple/whatsapp-bot",
+  "description": "Please star the bot if you like it",
+  "repository": "https://github.com/iamherok/Tadashi_Botto",
   "logo": "https://api.zeks.xyz/logo.jpg",
   "keywords": ["nodejs", "bot", "whatsapp bot", "whatsapp automation"],
   "env": {
       "PREFIX": {
           "description": "Prefix of your bot"
       },
-      "SESSION": {
-          "description": "A string for the session to be classified and to get access to the server endpoints"
-      },
       "MODS": {
           "description": "The phone numbers of the users who you want to be admin for the bot (should be in international format without + and multiple numbers must be separated by a comma \",\")",
-          "required": false
-      },
-      "CRON": {
-          "description": "Cron string to clear chats in a cycle",
           "required": false
       },
       "MONGO_URI": {
@@ -34,11 +27,6 @@
           "description": "A key used for gif searches",
           "required": false
       },
-      "GENIUS_KEY": {
-          "description": "Your access token of genius.com to fetch the lyrics",
-          "required": false
-      }
-  },
   "buildpacks": [
       {
           "url": "heroku/nodejs"
