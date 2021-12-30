@@ -5,22 +5,33 @@
   "logo": "https://api.zeks.xyz/logo.jpg",
   "keywords": ["nodejs", "bot", "whatsapp bot", "whatsapp automation"],
   "env": {
+      "NAME": {
+          "description": "Name of your bot"
+      },
       "PREFIX": {
           "description": "Prefix of your bot"
       },
-      "SESSION": {
-          "description": "A string for the session to be classified and to get access to the server endpoints"
+      "IMAGE_LINK": {
+          "description": "Set a image for your bot"
       },
       "MODS": {
           "description": "The phone numbers of the users who you want to be admin for the bot (should be in international format without + and multiple numbers must be separated by a comma \",\")",
           "required": false
       },
-      "CRON": {
-          "description": "Cron string to clear chats in a cycle",
-          "required": false
+      "SESSION": {
+          "description": "Need a default session name.(Required)"
+      },
+      "PACK_NAME": {
+          "description": "Need a default sticker pack name.(Required)"
+      },
+      "AUTHOR_NAME": {
+          "description": "Need a default author name.(Required)"
       },
       "MONGO_URI": {
           "description": "A secret String for Mongodb Connection.(Required)"
+      },
+      "MAX_LIMITS": {
+          "description": "Set a default limit for ever user.(Required)"
       },
       "GOOGLE_API_KEY": {
           "description": "Google API key for Google searches (Not Required)",
