@@ -17,65 +17,65 @@ module.exports = handle = (client, Client) => {
         Client.cmd.on('ytmp4', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
-                if(data.body == "") return data.reply(`Kirim perintah *${data.prefix}ytmp4 [ link ]*\nContoh : ${data.prefix}ytmp4 https://www.youtube.com/watch?v=0maWbr0FHKY`)
+                if(data.body == "") return data.reply(`Use *${data.prefix}ytmp4 [ link ]*\nEx : ${data.prefix}ytmp4 https://www.youtube.com/watch?v=0maWbr0FHKY`)
                 data.reply(mess.wait)
-                res = await axios.get(`${configs.apiUrl}/api/ytmp4/2?apikey=${configs.zeksKey}&url=${data.body}`)
-                if(res.data.status == false) data.reply(res.data.message)
+                res = await axios.get(`https://api.ichikaa.xyz/api/youtube?url=${data.body}&apikey=8NtSMQPG`)
+                if(res.data.result.video_url == "") data.reply("Something went wrong ❎")
                 ytm = res.data.result
-                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
-                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp4\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
+                teks = `*Data retrieved successfully!*\n\n*Title* : ${ytm.title}\n*Size* : ${ytm.size_video}\n\n\n_Please wait for the media file to be sent it may take a few minutes`
+                if(Number(ytm.size_video.split(' MB')[0] >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Successfully Obtained!*\n\n*Title* : ${ytm.title}\n*Size* : ${ytm.size_video}\n*Ext* : mp4\n*Link* : ${ytm.video_url}\n\n_For duration more than the limit served in the form of a link_`, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
-                Client.sendFileFromUrl(data.from, `${ytm.link}`, `${ytm.title} - Download.mp4`, `Video telah terkirim @${data.sender.split('@')[0]}`, data.message)
+                Client.sendFileFromUrl(data.from, `${ytm.video_url}`, `${ytm.title} - Download.mp4`, `Video has been sent @${data.sender.split('@')[0]}`, data.message)
             } catch {
-                data.reply('Ups maaf server sedang error atau mungkin apikey invalid')
+                data.reply('Oops sorry the server is in error or maybe the apikey is invalid')
             }
         })
         Client.cmd.on('ytmp3', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
-                if(data.body == "") return data.reply(`Kirim perintah *${data.prefix}ytmp3 [ link ]*\nContoh : ${data.prefix}ytmp3 https://www.youtube.com/watch?v=0maWbr0FHKY`)
+                if(data.body == "") return data.reply(`Send orders *${data.prefix}ytmp3 [ link ]*\nEx : ${data.prefix}ytmp3 https://www.youtube.com/watch?v=0maWbr0FHKY`)
                 data.reply(mess.wait)
-                res = await axios.get(`${configs.apiUrl}/api/ytmp3/2?apikey=${configs.zeksKey}&url=${data.body}`)
-                if(res.data.status == false) data.reply(res.data.message)
+                res = await axios.get(`https://api.ichikaa.xyz/api/youtube?url=${data.body}&apikey=8NtSMQPG`)
+                if(res.data.result.video_url == "") return data.reply("Something went wrong ❎")
                 ytm = res.data.result
-                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
-                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp3\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
+                teks = `*Data retrieved successfully!*\n\n*Title* : ${ytm.title}\n*Size* : ${ytm.size_audio}\n\n\n_Please wait for the media file to be sent it may take a few minutes`
+                if(Number(ytm.size_audio.split(' MB')[0] >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Successfully Obtained!*\n\n*Title* : ${ytm.title}\n*Size* : ${ytm.size_audio}\n_For the duration of more than the limit presented in the form of a link_`, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
-                Client.sendFileFromUrl(data.from, `${ytm.link}`, `${ytm.title} - Download.mp3`, ``, data.message)
+                Client.sendFileFromUrl(data.from, `${ytm.audio_url}`, `${ytm.title} - Download.mp3`, ``, data.message)
             } catch {
-                data.reply('Ups maaf server sedang error atau mungkin apikey invalid')
+                data.reply('Oops sorry the server is in error or maybe the apikey is invalid')
             }
         })
         Client.cmd.on('playvid', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
-                if(data.body == "") return data.reply(`Kirim perintah *${data.prefix}playvid [ query ]*\nContoh : ${data.prefix}playvid amv`)
+                if(data.body == "") return data.reply(`Send orders *${data.prefix}playvid [ query ]*\nEx : ${data.prefix}playvid amv`)
                 data.reply(mess.wait)
-                res = await axios.get(`${configs.apiUrl}/api/ytplaymp4/2?apikey=${configs.zeksKey}&q=${data.body}`)
-                if(res.data.status == false) data.reply(res.data.message)
+                res = await axios.get(`https://api-xcoders.xyz/api/download/playmp4?query=${data.body}&apikey=Zl0clXuAbx`)
+                if(res.data.result.video_url == "") return data.reply("Something went wrong ❎")
                 ytm = res.data.result
-                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*Source* : ${ytm.source}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
-                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp4\n*Source* : ${ytm.source}\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
-                Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
-                Client.sendFileFromUrl(data.from, `${ytm.link}`, 'video.mp4', `Video telah terkirim @${data.sender.split('@')[0]}`, data.message)
+                teks = `*Data successfully retrieved!*\n\n*Title* : ${ytm.title}\n*Size* : ${ytm.size}\n*Quality* : ${ytm.quality}\n\n_Please wait for the media file to be sent`
+                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumbnail}`, 'thumb.jpg', `*Data Obtained Successfully!*\n\n*Title* : ${ytm.title}\n*Size* : ${ytm.size}\n*Quality* : ${ytm.quality}\n*Source* : ${ytm.url}\n\n_For duration longer I can't download the song`, data.message)
+                Client.sendFileFromUrl(data.from, `${ytm.thumbnail}`, 'thumb.jpg', teks, data.message)
+                Client.sendFileFromUrl(data.from, `${ytm.url}`, 'video.mp4', `Video has been sent @${data.sender.split('@')[0]}`, data.message)
             } catch (e) {
-                data.reply('Ups maaf server sedang error atau mungkin apikey invalid')
+                data.reply('Oops sorry the server is in error or maybe the apikey is invalid')
             }
         })
         Client.cmd.on('play', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
-                if(data.body == "") return data.reply(`Kirim perintah *${data.prefix}play [ link ]*\nContoh : ${data.prefix}play alone`)
+                if(data.body == "") return data.reply(`Send orders *${data.prefix}play [ query ]*\nEx : ${data.prefix}play Sunflower`)
                 data.reply(mess.wait)
-                res = await axios.get(`${configs.apiUrl}/api/ytplaymp3/2?apikey=${configs.zeksKey}&q=${data.body}`)
-                if(res.data.status == false) data.reply(res.data.message)
+                res = await axios.get(`https://api-xcoders.xyz/api/download/playmp3?query=${data.body}&apikey=Zl0clXuAbx`)
+                if(res.data.result.video_url == "") return data.reply("Something went wrong ❎")
                 ytm = res.data.result
-                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*Source* : ${ytm.source}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
-                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp3\n*Source* : ${ytm.source}\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
-                Client.sendFileFromUrl(data.from, ytm.thumb, 'thumb.jpg', teks, data.message)
-                Client.sendFileFromUrl(data.from, ytm.link, `${ytm.title} - Download.mp3`, ``, data.message)
-            } catch {
-                data.reply('Ups maaf server sedang error atau mungkin apikey invalid')
+                teks = `*Data successfully retrieved!*\n\n*Title* : ${ytm.title}\n*Size* : ${ytm.size}\n*Quality* : ${ytm.quality}\n\n_Please wait for the media file to be sent`
+                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumbnail}`, 'thumb.jpg', `*Data Obtained Successfully!*\n\n*Title* : ${ytm.title}\n*Size* : ${ytm.size}\n*Quality* : ${ytm.quality}\n*Source* : ${ytm.url}\n\n_For duration longer I can't download the song`, data.message)
+                Client.sendFileFromUrl(data.from, ytm.thumbnail, 'thumb.jpg', teks, data.message)
+                Client.sendFileFromUrl(data.from, ytm.url, `${ytm.title} - Download.mp3`, ``, data.message)
+            } catch (e) {
+                data.reply('Oops sorry the server is in error or maybe the apikey is invalid')
             }
         })
         Client.cmd.on('ig', async (data) => {
