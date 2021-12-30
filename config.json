@@ -1,6 +1,6 @@
 {	
 	"prefix": "!", 
-	"defaultSessionName": process.env.PREFIX || "Tadashi",
+	"defaultSessionName": "Tadashi",
  	"mongo": "Tadashi",
 	"autoRead": true,
 	"self": false, 
