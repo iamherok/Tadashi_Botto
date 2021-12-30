@@ -1,18 +1,16 @@
 {	
-	"prefix": process.env.PREFIX || "!", 
+	"prefix": "!", 
 	"defaultSessionName": process.env.PREFIX || "Tadashi",
- 	"mongo": process.env.MONGO_URI || "Tadashi",
+ 	"mongo": "Tadashi",
 	"autoRead": true,
 	"self": false, 
-	"maxLimit": process.env.MAX_LIMITS || "80",
-	"ownerList": [(process.env.MODS || "")
-		.split(",")
-		.map((number) => `${number}@s.whatsapp.net`)]
-    "imgUrl": process.env.IMAGE_LINK || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtI8fIw7p9eimzyMfzMVokA4RIe0oHZ0z_CQ&usqp=CAU",
-	"pack": process.env.PACK_NAME || "Tadashi",
-	"author": process.env.AUTHOR_NAME || "Well .....",
-         "gokey": process.env.GOOGLE_API_KEY || "null",
-         "chatbot": process.env.CHAT_BOT_URL || "null",
-         "gifkey": process.env.TENOR_API_KEY || "null",
-         "name": process.env.NAME || "Tadashi"
+	"maxLimit": "8000000000",
+	"ownerList": ["917003213983@s.whatsapp.net", "919832361550@s.whatsapp.net"],
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtI8fIw7p9eimzyMfzMVokA4RIe0oHZ0z_CQ&usqp=CAU",
+	"pack": "Tadashi",
+	"author": "Well .....",
+         "gokey": "AIzaSyDMbI3nvmQUrfjoCJYLS69Lej1hSXQjnWI",
+         "chatbot": "http://api.brainshop.ai/get?bid=161731&key=UiMcbVKdJOn6hvy2&uid=[uid]&msg=[msg]",
+         "gifkey": "OZ058AT6FN3E",
+         "name": "Tadashi"
 }
