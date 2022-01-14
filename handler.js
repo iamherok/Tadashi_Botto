@@ -23,7 +23,7 @@ module.exports = handle = (client, Client) => {
                 if(res.data.result.video_url == "") data.reply("Something went wrong ❎")
                 ytm = res.data.result
                 teks = `*Data retrieved successfully!*\n\n*Title* : ${ytm.title}\n*Size* : ${ytm.size_video}\n\n\n_Please wait for the media file to be sent it may take a few minutes`
-                if(Number(ytm.size_video.split(' MB')[0] >= 50.00) return data.reply("The video is so large ")
+                if(Number(ytm.size_video.split(' MB')[0] >= 50.00) data.reply("The video is so large ")
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.video_url}`, `${ytm.title} - Download.mp4`, `Video has been sent @${data.sender.split('@')[0]}`, data.message)
             } catch {
